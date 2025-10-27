@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn4efctinsgod"]
+
+[ext_resource type="Script" uid="uid://1dd8f0vye7nx" path="res://Scripts/Objects/box.gd" id="1_8s7be"]
+[ext_resource type="Texture2D" uid="uid://halgsscfr6li" path="res://Assets/08-Box/Hit.png" id="1_kgpns"]
+[ext_resource type="Texture2D" uid="uid://ck68n28146dmy" path="res://Assets/08-Box/Idle.png" id="2_8s7be"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg3po"]
+atlas = ExtResource("1_kgpns")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcfls"]
+atlas = ExtResource("2_8s7be")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ae587"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg3po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcfls")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcfls")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ic13"]
+size = Vector2(21, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgpns"]
+size = Vector2(47, 16)
+
+[node name="Box" type="StaticBody2D"]
+script = ExtResource("1_8s7be")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ae587")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1ic13")
+
+[node name="Detector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_kgpns")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

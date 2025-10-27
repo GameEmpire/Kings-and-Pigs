@@ -1,0 +1,183 @@
+[gd_scene load_steps=24 format=3 uid="uid://cndgimg3se1uo"]
+
+[ext_resource type="Texture2D" uid="uid://b1sqvh8kto01x" path="res://Assets/12-Live and Coins/Small Diamond (18x14).png" id="1_43qhw"]
+[ext_resource type="Script" uid="uid://dspcjfn6480i3" path="res://Scripts/UI/diamond_counter.gd" id="1_arkal"]
+[ext_resource type="Texture2D" uid="uid://qn6vklmc7d6b" path="res://Assets/12-Live and Coins/Numbers (6x8).png" id="3_bec4g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arkal"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bec4g"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r3eb"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j74rx"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sna6n"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw33u"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt3xo"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec72t"]
+atlas = ExtResource("1_43qhw")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k73wa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arkal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bec4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j74rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sna6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw33u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt3xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec72t")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k73wa"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(54, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ds5t"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(0, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lpqm"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(6, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngbcp"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(12, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3dmy"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(18, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l3rb"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(24, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gumi1"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(30, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7388"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(36, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v0ij"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(42, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qi8u"]
+atlas = ExtResource("3_bec4g")
+region = Rect2(48, 0, 6, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gb0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k73wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ds5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lpqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngbcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3dmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l3rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gumi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7388")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v0ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qi8u")
+}],
+"loop": true,
+"name": &"Numbers",
+"speed": 1.0
+}]
+
+[node name="Diamond counter" type="Node2D" groups=["Diamonds counter"]]
+script = ExtResource("1_arkal")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k73wa")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 3
+frame_progress = 0.762994
+
+[node name="Digit 1" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, -1)
+sprite_frames = SubResource("SpriteFrames_3gb0f")
+animation = &"Numbers"
+
+[node name="Digit 2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(18, 0)
+sprite_frames = SubResource("SpriteFrames_3gb0f")
+animation = &"Numbers"
+frame = 2
+
+[node name="Digit 3" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(24, 0)
+sprite_frames = SubResource("SpriteFrames_3gb0f")
+animation = &"Numbers"
+frame = 2
+
+[node name="Digit 4" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(30, 0)
+sprite_frames = SubResource("SpriteFrames_3gb0f")
+animation = &"Numbers"
+frame = 2

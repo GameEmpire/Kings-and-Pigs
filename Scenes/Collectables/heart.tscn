@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://dclqn07m27kog"]
+
+[ext_resource type="Script" uid="uid://dwk3248g6c41i" path="res://Scripts/Collectables/diamond.gd" id="1_fakfu"]
+[ext_resource type="Texture2D" uid="uid://dcty7idufp4b4" path="res://Assets/12-Live and Coins/Big Heart Hit (18x14).png" id="1_q7426"]
+[ext_resource type="Texture2D" uid="uid://15632e53lw58" path="res://Assets/12-Live and Coins/Big Heart Idle (18x14).png" id="2_fakfu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6l5h8"]
+bounce = 0.4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxqln"]
+atlas = ExtResource("1_q7426")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h1d3"]
+atlas = ExtResource("1_q7426")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhgiq"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xds3"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk52f"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6awc"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sabm3"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwm1t"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gggol"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6j35"]
+atlas = ExtResource("2_fakfu")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2s7l5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxqln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h1d3")
+}],
+"loop": false,
+"name": &"Collect",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhgiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xds3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk52f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6awc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sabm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwm1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gggol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6j35")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7426"]
+radius = 6.08276
+
+[node name="Heart" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_6l5h8")
+lock_rotation = true
+script = ExtResource("1_fakfu")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2s7l5")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(-2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_q7426")
+
+[node name="Detector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_q7426")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=3 uid="uid://2pbj3vsuoobn"]
+
+[ext_resource type="Texture2D" uid="uid://dmvrxiuhwwk6c" path="res://Assets/12-Live and Coins/Big Diamond Idle (18x14).png" id="1_dyoen"]
+[ext_resource type="Script" uid="uid://dwk3248g6c41i" path="res://Scripts/Collectables/diamond.gd" id="1_hc05t"]
+[ext_resource type="Texture2D" uid="uid://c1t2i4x1nljet" path="res://Assets/12-Live and Coins/Big Diamond Hit (18x14).png" id="2_jav1c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hc05t"]
+bounce = 0.4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve037"]
+atlas = ExtResource("2_jav1c")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6v4y"]
+atlas = ExtResource("2_jav1c")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc05t"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jav1c"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgn6r"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngt60"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sngr0"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd01k"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12y3n"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeimr"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tjuo"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(144, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sue6"]
+atlas = ExtResource("1_dyoen")
+region = Rect2(162, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ve037"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve037")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6v4y")
+}],
+"loop": false,
+"name": &"Collect",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc05t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jav1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgn6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngt60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sngr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd01k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12y3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeimr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tjuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sue6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6v4y"]
+radius = 5.09902
+
+[node name="Diamond" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_hc05t")
+lock_rotation = true
+script = ExtResource("1_hc05t")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ve037")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(-2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_x6v4y")
+
+[node name="Detector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_x6v4y")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

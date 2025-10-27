@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsp6yyjse05k0"]
+
+[ext_resource type="Texture2D" uid="uid://dmp6pp3ak7g7p" path="res://Assets/08-Box/Box Pieces 1.png" id="1_fsclm"]
+[ext_resource type="Texture2D" uid="uid://bf1a48i437cgd" path="res://Assets/08-Box/Box Pieces 2.png" id="2_x4qyt"]
+[ext_resource type="Texture2D" uid="uid://brp83r833nhxt" path="res://Assets/08-Box/Box Pieces 3.png" id="3_pt33o"]
+[ext_resource type="Texture2D" uid="uid://b35mqehv0uxw1" path="res://Assets/08-Box/Box Pieces 4.png" id="4_pt33o"]
+
+[node name="Box pieces" type="Node2D"]
+
+[node name="Piece 1" type="RigidBody2D" parent="."]
+position = Vector2(-7, 3)
+collision_layer = 2
+collision_mask = 2
+linear_velocity = Vector2(-200, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece 1"]
+texture = ExtResource("1_fsclm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piece 1"]
+polygon = PackedVector2Array(-5, -4, -5, 5, 4, 5, 4, 0, 3, -2, 2, -3, 0, -4)
+
+[node name="Piece 2" type="RigidBody2D" parent="."]
+position = Vector2(-8, -7)
+collision_layer = 2
+collision_mask = 2
+linear_velocity = Vector2(-200, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece 2"]
+texture = ExtResource("2_x4qyt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piece 2"]
+polygon = PackedVector2Array(-5, -5, -5, 5, 0, 5, 2, 4, 4, 2, 5, 0, 5, -5)
+
+[node name="Piece 3" type="RigidBody2D" parent="."]
+position = Vector2(5, -6)
+collision_layer = 2
+collision_mask = 2
+linear_velocity = Vector2(200, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece 3"]
+texture = ExtResource("3_pt33o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piece 3"]
+polygon = PackedVector2Array(-5, -2, -5, 3, -3, 5, 5, 5, 5, -2)
+
+[node name="Piece 4" type="RigidBody2D" parent="."]
+position = Vector2(5, 2)
+collision_layer = 2
+collision_mask = 2
+linear_velocity = Vector2(200, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Piece 4"]
+texture = ExtResource("4_pt33o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piece 4"]
+polygon = PackedVector2Array(-2, -2, -5, 1, -5, 5, 5, 5, 5, -2)
